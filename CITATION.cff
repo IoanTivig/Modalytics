@@ -2,6 +2,14 @@ cff-version: 1.2.0
 message: "If you use Modalytics in your research, please cite it as below (the article will be added on publication)."
 title: "Modalytics: an open-source modular multi-modal imaging analysis platform"
 type: software
+abstract: >-
+  Modalytics is an open-source, modular desktop platform for multimodal imaging analysis. It places whole-slide
+  images, quantitative phase maps from digital holographic microscopy and other quantitative phase imaging, and
+  ordinary microscope images in one micrometre-true space, where they are registered, annotated with vector
+  outlines, segmented by neural networks (ONNX Runtime), measured with readable parameter scripts and classified;
+  segmentation models and classifiers are trained and validated in the program, and results are written up as
+  reports. Analyses are gathered in shareable profiles; the included colonic tissue profile segments glands on DHM
+  phase maps and H&E slides and grades dysplasia.
 authors:
   - family-names: Tivig
     given-names: Ioan Cristian
