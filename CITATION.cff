@@ -13,7 +13,7 @@ abstract: >-
   phase maps and H&E slides and grades dysplasia.
 authors:
   - family-names: Tivig
-    given-names: Ioan Cristian
+    given-names: Ioan
 license: LGPL-3.0-or-later
 repository-code: "https://github.com/IoanTivig/Modalytics"
 version: 0.1.0

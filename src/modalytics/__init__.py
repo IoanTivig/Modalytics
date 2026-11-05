@@ -1,7 +1,7 @@
 """
 Modalytics: open-source modular multi-modal imaging analysis platform.
 
-Copyright (C) 2026 Ioan Cristian Tivig.
+Copyright (C) 2026 Ioan Tivig.
 Licensed under the GNU Lesser General Public License v3.0 or later
 (see COPYING.LESSER and COPYING).
 """

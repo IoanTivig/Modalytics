@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = "LGPL-3.0-or-later"
 license-files = ["COPYING", "COPYING.LESSER", "NOTICE"]
-authors = [{ name = "Ioan Cristian Tivig" }]
+authors = [{ name = "Ioan Tivig" }]
 classifiers = [
     "Programming Language :: Python :: 3",
     "Operating System :: Microsoft :: Windows",

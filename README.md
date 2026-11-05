@@ -47,7 +47,7 @@ dysplasia. The data, the trained models and the analysis profile of that study a
 > platform for multimodal imaging analysis: validation on digital holographic microscopy images of colonic
 > polyps* (in preparation).
 
-If you use Modalytics in your research, please cite it and the article. Software: Tivig IC. *Modalytics* (all
+If you use Modalytics in your research, please cite it and the article. Software: Tivig I. *Modalytics* (all
 versions: [doi:10.5281/zenodo.23991084](https://doi.org/10.5281/zenodo.23991084); version 0.1.0, used in the
 article: [doi:10.5281/zenodo.23991085](https://doi.org/10.5281/zenodo.23991085)); see also [CITATION.cff](CITATION.cff).
 
@@ -69,7 +69,7 @@ building the installer (`python packaging/build.py`).
 
 ## Licence
 
-Copyright © 2026 Ioan Cristian Tivig. Modalytics is free software: you can redistribute it and/or modify it under
+Copyright © 2026 Ioan Tivig. Modalytics is free software: you can redistribute it and/or modify it under
 the terms of the GNU Lesser General Public License, version 3 or (at your option) any later version — see
 [COPYING.LESSER](COPYING.LESSER) and [COPYING](COPYING). Third-party notices: [NOTICE](NOTICE). The included models
 are distributed under CC BY 4.0; their encoders were initialised from ImageNet and MicroNet (MIT) weights.
