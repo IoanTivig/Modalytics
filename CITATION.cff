@@ -1,5 +1,6 @@
 cff-version: 1.2.0
 message: "If you use Modalytics in your research, please cite it as below (the article will be added on publication)."
+doi: 10.5281/zenodo.23991084
 title: "Modalytics: an open-source modular multi-modal imaging analysis platform"
 type: software
 abstract: >-

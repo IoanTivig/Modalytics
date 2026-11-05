@@ -1,5 +1,7 @@
 # Modalytics
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23991084.svg)](https://doi.org/10.5281/zenodo.23991084)
+
 Open-source, modular platform for **multimodal imaging analysis**. Modalytics places every image of a sample —
 whole-slide images (WSI), quantitative phase maps from digital holographic microscopy (DHM) and other quantitative
 phase imaging (QPI), and ordinary microscope pictures — in one **micrometre-true space**, where they are superposed,
@@ -45,7 +47,9 @@ dysplasia. The data, the trained models and the analysis profile of that study a
 > platform for multimodal imaging analysis: validation on digital holographic microscopy images of colonic
 > polyps* (in preparation).
 
-If you use Modalytics in your research, please cite it ([CITATION.cff](CITATION.cff)) and the article.
+If you use Modalytics in your research, please cite it and the article. Software: Tivig IC. *Modalytics* (all
+versions: [doi:10.5281/zenodo.23991084](https://doi.org/10.5281/zenodo.23991084); version 0.1.0, used in the
+article: [doi:10.5281/zenodo.23991085](https://doi.org/10.5281/zenodo.23991085)); see also [CITATION.cff](CITATION.cff).
 
 ## From the source
 
