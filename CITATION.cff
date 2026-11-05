@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use Modalytics in your research, please cite it as below (the article will be added on publication)."
+title: "Modalytics: an open-source modular multi-modal imaging analysis platform"
+type: software
+authors:
+  - family-names: Tivig
+    given-names: Ioan Cristian
+license: LGPL-3.0-or-later
+repository-code: "https://github.com/IoanTivig/Modalytics"
+version: 0.1.0
+date-released: 2026-11-06
+keywords:
+  - whole-slide imaging
+  - quantitative phase imaging
+  - digital holographic microscopy
+  - multi-modal registration
+  - digital pathology

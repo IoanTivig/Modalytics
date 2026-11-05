@@ -1,0 +1,21 @@
+{
+  "key": "imagenet",
+  "name": "ImageNet",
+  "kind": "imagenet",
+  "encoders": [
+    "*"
+  ],
+  "image_types": [
+    "*"
+  ],
+  "description": "Natural photographs (ImageNet, 1.3 million images in 1000 classes). The usual starting point; downloaded once by segmentation-models-pytorch for its encoders.",
+  "licence": "As distributed by segmentation-models-pytorch and timm with each encoder",
+  "redistributable": true,
+  "references": [
+    {
+      "text": "Deng J, Dong W, Socher R, Li LJ, Li K, Fei-Fei L (2009). ImageNet: A large-scale hierarchical image database. CVPR 2009: 248–255.",
+      "doi": "10.1109/CVPR.2009.5206848"
+    }
+  ],
+  "homepage": "https://github.com/qubvel-org/segmentation_models.pytorch"
+}

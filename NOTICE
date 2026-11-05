@@ -1,0 +1,33 @@
+Modalytics
+Copyright (C) 2026 Ioan Cristian Tivig
+
+Modalytics is free software: you can redistribute it and/or modify it under
+the terms of the GNU Lesser General Public License as published by the Free
+Software Foundation, either version 3 of the License, or (at your option) any
+later version. See COPYING.LESSER and COPYING.
+
+Parts of Modalytics are ported from HoloPath (same author).
+
+Third-party software used (not bundled in this repository):
+
+  PySide6 / Qt for Python   LGPL-3.0     https://www.qt.io/qt-for-python
+  pygfx                     BSD-2-Clause https://github.com/pygfx/pygfx
+  wgpu-py / wgpu-native     BSD-2-Clause / MIT or Apache-2.0  https://github.com/pygfx/wgpu-py
+  rendercanvas              BSD-2-Clause https://github.com/pygfx/rendercanvas
+  NumPy                     BSD-3-Clause https://numpy.org
+  zarr-python, numcodecs    MIT          https://zarr.dev
+  mapbox_earcut             ISC          https://github.com/skogler/mapbox_earcut_python
+  QtAwesome                 MIT          https://github.com/spyder-ide/qtawesome
+    bundles the Material Design Icons font 6.9.96 (Pictogrammers), Apache-2.0
+    https://pictogrammers.com/library/mdi/ · https://www.apache.org/licenses/LICENSE-2.0
+
+Included in this repository: src/modalytics/resources/icons/mdi6_index.json, the names,
+aliases and categories of Material Design Icons 6.9.96 (from the project's meta.json,
+Apache-2.0), used to search icons for processing buttons. Brand / logo and social-media
+icons are left out: the Material Design Icons licence does not cover them.
+
+Acknowledgements: the multiscale display approach (load only the visible tiles
+at the matching pyramid level) follows ideas from napari (BSD-3-Clause,
+https://napari.org) and vispy (BSD-3-Clause, https://vispy.org). No napari or
+vispy source code is included at this time; if any is reused it will keep its
+original copyright notice and be listed here.

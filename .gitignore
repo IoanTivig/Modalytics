@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.venv-*/
+build/
+dist/
+.pytest_cache/
+
+# IDE and local tools
+.idea/
+.vscode/
+.claude/
+
+# Data stays on your computer: projects, phase maps, scans, reports, training sets and runs.
+_data/
+*.modalytics
+*.modalytics.tmp
+*.hpro
+*.mtrain
+training_runs/
+*.zarr/
+*.svs
+*.ndpi
+*.scn
+*.tif
+*.tiff
+Phase.txt
+
+# Models and profile bundles: release assets, not git (download the models into models/)
+models/*.mmodel
+*.mmodel
+*.mencoder
+*.mprofile
+
+# Logs
+*.log

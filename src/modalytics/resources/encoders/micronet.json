@@ -1,0 +1,43 @@
+{
+  "key": "micronet",
+  "name": "MicroNet (microscopy)",
+  "kind": "download",
+  "image_types": [
+    "*"
+  ],
+  "description": "Encoders trained from random weights to classify ~100,000 micrographs (light and electron microscopy of materials, 54 classes). Microscopy rather than photographs; materials, not tissue: whether it helps on your images, Compare shows.",
+  "licence": "MIT (NASA, pretrained-microscopy-models)",
+  "redistributable": true,
+  "references": [
+    {
+      "text": "Stuckner J, Harder B, Smith TM (2022). Microstructure segmentation with deep learning encoders pre-trained on a large microscopy dataset. npj Computational Materials 8.",
+      "doi": "10.1038/s41524-022-00878-5"
+    }
+  ],
+  "homepage": "https://github.com/nasa/pretrained-microscopy-models",
+  "files": {
+    "resnet18": {
+      "url": "https://nasa-public-data.s3.amazonaws.com/microscopy_segmentation_models/resnet18_pretrained_microscopynet_v1.0.pth.tar",
+      "size": 46836793
+    },
+    "resnet34": {
+      "url": "https://nasa-public-data.s3.amazonaws.com/microscopy_segmentation_models/resnet34_pretrained_microscopynet_v1.0.pth.tar",
+      "size": 87331097,
+      "sha256": "de5e3865792eb933a3f08db0c6b3dba5381cc96318830b4bca238aa7dddcde0c"
+    },
+    "resnet50": {
+      "url": "https://nasa-public-data.s3.amazonaws.com/microscopy_segmentation_models/resnet50_pretrained_microscopynet_v1.1.pth.tar",
+      "size": 102546991,
+      "sha256": "866d748420c99ccdd2ab988f2dcba12a5070b7c909d26bb3897a1ef65dca7402"
+    },
+    "efficientnet-b0": {
+      "url": "https://nasa-public-data.s3.amazonaws.com/microscopy_segmentation_models/efficientnet-b0_pretrained_microscopynet_v1.0.pth.tar",
+      "size": 21442263,
+      "sha256": "f6f0dfb79847e490e90931be6b54c81874bd5b06f58fcfc14305c51e65888408"
+    },
+    "efficientnet-b3": {
+      "url": "https://nasa-public-data.s3.amazonaws.com/microscopy_segmentation_models/efficientnet-b3_pretrained_microscopynet_v1.0.pth.tar",
+      "size": 49472349
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "key": "imagenet_micronet",
+  "name": "ImageNet → MicroNet",
+  "kind": "download",
+  "image_types": [
+    "*"
+  ],
+  "description": "Encoders started from ImageNet, then trained on MicroNet's ~100,000 micrographs (materials).",
+  "licence": "MIT (NASA, pretrained-microscopy-models)",
+  "redistributable": true,
+  "references": [
+    {
+      "text": "Stuckner J, Harder B, Smith TM (2022). Microstructure segmentation with deep learning encoders pre-trained on a large microscopy dataset. npj Computational Materials 8.",
+      "doi": "10.1038/s41524-022-00878-5"
+    }
+  ],
+  "homepage": "https://github.com/nasa/pretrained-microscopy-models",
+  "files": {
+    "resnet18": {
+      "url": "https://nasa-public-data.s3.amazonaws.com/microscopy_segmentation_models/resnet18_pretrained_imagenet-microscopynet_v1.0.pth.tar",
+      "size": 46836793
+    },
+    "resnet34": {
+      "url": "https://nasa-public-data.s3.amazonaws.com/microscopy_segmentation_models/resnet34_pretrained_imagenet-microscopynet_v1.0.pth.tar",
+      "size": 87331097,
+      "sha256": "5182913109e2affed9e0f623b6d0881eb8c346ae61c39731bbe4d9baa207388a"
+    },
+    "resnet50": {
+      "url": "https://nasa-public-data.s3.amazonaws.com/microscopy_segmentation_models/resnet50_pretrained_imagenet-microscopynet_v1.0.pth.tar",
+      "size": 102546991
+    },
+    "efficientnet-b0": {
+      "url": "https://nasa-public-data.s3.amazonaws.com/microscopy_segmentation_models/efficientnet-b0_pretrained_imagenet-microscopynet_v1.0.pth.tar",
+      "size": 21442263
+    },
+    "efficientnet-b3": {
+      "url": "https://nasa-public-data.s3.amazonaws.com/microscopy_segmentation_models/efficientnet-b3_pretrained_imagenet-microscopynet_v1.0.pth.tar",
+      "size": 49472349
+    }
+  }
+}

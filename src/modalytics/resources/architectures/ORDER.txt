@@ -1,0 +1,6 @@
+unet_resnet34
+deeplabv3p_resnet50
+unet_convnext_tiny
+unet_efficientnet_b0
+unet_resnet18
+unetpp_efficientnet_b3

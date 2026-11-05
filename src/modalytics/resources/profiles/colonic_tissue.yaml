@@ -1,0 +1,183 @@
+# Modalytics profile — edit in Settings › Profiles, or here by hand
+format: modalytics-profile
+format_version: 1
+name: Colonic tissue
+kind: tissue
+description: 'Colon biopsies scanned as whole slides, with DHM phase maps of the same sections. Glands are segmented,
+  measured and graded: low-grade dysplasia (normal tissue included, as biopsies are not taken from healthy people)
+  or high-grade dysplasia.'
+revision: 2
+images:
+- wsi
+- phase
+classes:
+  Gland:
+    color: '#33cc66'
+    subgroups:
+      Low grade dysplasia: '#facc26'
+      High grade dysplasia: '#eb4040'
+aliases:
+  Gland:
+    Normal: Low grade dysplasia
+    Dysplasia low grade: Low grade dysplasia
+    Dysplasia high grade: High grade dysplasia
+segmentation:
+  Gland:
+    wsi: wsi_effnetb3_L00_gland_01
+    phase: unet_efficientnet_b0__imagenet_micronet
+processing:
+  wsi:
+  - name: OD map
+    steps:
+    - step: od:od_map
+      options:
+        background: Estimated from the image
+    measure: true
+parameters:
+  image:any:width_px: {}
+  image:any:height_px: {}
+  image:any:width_um: {}
+  image:any:height_um: {}
+  image:any:total_area_um2: {}
+  image:phase:phase_mean: {}
+  image:phase:phase_std: {}
+  image:phase:phase_var: {}
+  image:phase:phase_skew: {}
+  image:phase:phase_kurt: {}
+  image:phase:phase_min: {}
+  image:phase:phase_max: {}
+  image:phase:phase_median: {}
+  image:phase:phase_volume: {}
+  image:phase:bimodality: {}
+  image:phase:height_mean: {}
+  image:phase:height_std: {}
+  image:phase:height_min: {}
+  image:phase:height_max: {}
+  image:phase:energy:
+    distance: 1
+  image:phase:entropy:
+    distance: 1
+  image:phase:correlation_length:
+    window: 3
+  image:phase:uniformity: {}
+  image:phase:contrast:
+    distance: 1
+  image:phase:homogeneity:
+    distance: 1
+  image:phase:dissimilarity:
+    distance: 1
+  image:phase:correlation:
+    distance: 1
+  image:phase:disorder_strength:
+    window: 3
+    refractive_index: 1.38
+  image:phase:phase_fluctuation_mean:
+    window: 3
+  object:any:area: {}
+  object:any:length_avg: {}
+  object:any:length_min: {}
+  object:any:length_max: {}
+  object:any:perimeter: {}
+  object:phase:mean: {}
+  object:phase:variance: {}
+  object:phase:phase_volume: {}
+  object:phase:skewness: {}
+  object:phase:kurtosis: {}
+  object:phase:std: {}
+  object:phase:bimodality: {}
+  object:any:circularity: {}
+  object:any:eccentricity: {}
+  object:any:ellipticity: {}
+  object:any:curvature_avg:
+    spacing: 0.0
+  object:any:curvature_max:
+    spacing: 0.0
+  object:any:curvature_min:
+    spacing: 0.0
+  object:phase:energy:
+    distance: 1
+  object:phase:entropy:
+    distance: 1
+  object:phase:uniformity: {}
+  object:phase:contrast:
+    distance: 1
+  object:phase:homogeneity:
+    distance: 1
+  object:phase:correlation_length:
+    degree: 2
+    window: 3
+  object:phase:dissimilarity:
+    distance: 1
+  object:phase:disorder_strength:
+    degree: 2
+    window: 3
+    refractive_index: 1.38
+  object:phase:correlation:
+    distance: 1
+  object:phase:phase_fluctuation_mean:
+    degree: 2
+    window: 3
+  object:any:in_image: {}
+  object:od:mean: {}
+  object:od:variance: {}
+  object:od:integrated_od: {}
+  object:od:skewness: {}
+  object:od:kurtosis: {}
+  object:od:std: {}
+  object:od:bimodality: {}
+  object:od:energy:
+    distance: 1
+  object:od:entropy:
+    distance: 1
+  object:od:uniformity: {}
+  object:od:contrast:
+    distance: 1
+  object:od:homogeneity:
+    distance: 1
+  object:od:dissimilarity:
+    distance: 1
+  object:od:correlation:
+    distance: 1
+  object:od:correlation_length:
+    degree: 2
+  object:od:fluctuation_mean:
+    window: 3
+  object:any:solidity: {}
+  object:any:convexity: {}
+  object:any:feret_max: {}
+  object:any:feret_min: {}
+  object:any:feret_ratio: {}
+  object:any:roundness: {}
+  object:any:fractal_dimension: {}
+  object:any:holes: {}
+  object:any:hole_fraction: {}
+  object:any:best_alignment_metric: {}
+  class:any:count: {}
+  class:any:density: {}
+  class:any:area_fraction: {}
+  class:any:mean_area: {}
+  class:any:mean_bam: {}
+  class:any:bam_entropy: {}
+  class:any:regularity_index: {}
+classification:
+  Gland:
+    kind: ranges
+    group: Gland
+    grades:
+    - Low grade dysplasia
+    - High grade dysplasia
+    note: 'Ranges rule of the validation article: training set ''Colonic Glands Simplified V2'' (14 projects, 421 glands);
+      leave-one-project-out balanced accuracy 73 % (60–84); evaluation 83 %, test 81 %'
+    rules:
+    - grade: High grade dysplasia
+      combine: any
+      conditions:
+      - parameter: object:phase:bimodality
+        op: <=
+        value: 0.3530671548206208
+        label: Bimodality
+      - parameter: object:phase:skewness
+        op: <=
+        value: -0.1756981084766872
+        label: Phase Skewness
+report: ''
