@@ -1,3 +1,5 @@
+<img src="src/modalytics/resources/brand/logo.png" alt="Modalytics" height="56">
+
 # Modalytics
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23991084.svg)](https://doi.org/10.5281/zenodo.23991084)

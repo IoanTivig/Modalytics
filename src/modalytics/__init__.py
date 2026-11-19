@@ -8,7 +8,7 @@ Licensed under the GNU Lesser General Public License v3.0 or later
 
 import sys
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 # Console messages use emoji prefixes (✅ ⚠️ ℹ️ ❌ 🆕). Windows consoles default
 # to a legacy code page that cannot encode them, so switch stdout/stderr to UTF-8.

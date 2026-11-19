@@ -52,7 +52,21 @@ Compression=lzma2/max
 SolidCompression=yes
 LZMAUseSeparateProcess=yes
 LZMANumBlockThreads=8
-WizardStyle=modern
+; The Modalytics look (pictures made by packaging/make_icon.py): light or dark as Windows is set, the app's own
+; background colours, the side panel of the loading window (white logo on the dark brand gradient) on the first and
+; last pages, the application icon in the corner of the others; one picture per screen scale, setup picks
+; (the same pictures in the dark appearance: without the DynamicDark lines setup swaps in its own; the welcome page
+; is shown, so the panel greets the user)
+#define WizardImages "installer\wizard-164x314.png,installer\wizard-192x386.png,installer\wizard-246x459.png,installer\wizard-273x556.png,installer\wizard-328x604.png,installer\wizard-355x700.png,installer\wizard-410x797.png"
+#define SmallImages "installer\small-55x55.png,installer\small-64x68.png,installer\small-83x80.png,installer\small-92x97.png,installer\small-110x106.png,installer\small-119x123.png,installer\small-138x140.png"
+WizardStyle=modern dynamic
+WizardBackColor=#fbf9fc
+WizardBackColorDynamicDark=#1a1621
+WizardImageFile={#WizardImages}
+WizardImageFileDynamicDark={#WizardImages}
+WizardSmallImageFile={#SmallImages}
+WizardSmallImageFileDynamicDark={#SmallImages}
+DisableWelcomePage=no
 #ifdef Spanning
 DiskSpanning=yes
 DiskSliceSize=1900000000   ; under GitHub's 2 GiB per release file
@@ -60,6 +74,11 @@ DiskSliceSize=1900000000   ; under GitHub's 2 GiB per release file
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
+
+[Messages]
+WelcomeLabel1=Welcome to Modalytics {#AppVersion}
+WelcomeLabel2=Modalytics places whole-slide images, quantitative phase maps and microscope pictures of a sample in one micrometre-true space, to annotate, segment, measure and classify them.%n%nThis will install Modalytics on your computer. Your profiles, models and settings are kept when you update or uninstall.
+FinishedHeadingLabel=Modalytics is installed
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked

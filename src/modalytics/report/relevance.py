@@ -23,6 +23,8 @@ Sections:
 
 from __future__ import annotations
 
+from modalytics import brand
+
 import math
 
 import numpy as np
@@ -33,7 +35,7 @@ from modalytics.training import relevance as rv
 VERDICT_CSS = """
 .v-separates { color: #1f8a70; font-weight: 600; } .v-weak { color: #b07a10; } .v-promising { color: #0072B2; }
 .v-chance, .v-too { color: #8b97a8; }
-tr.proposed td { background: #e8f6f0; }
+tr.proposed td { background: #f3ecf7; }
 """
 PALETTE = ("#0072B2", "#E69F00", "#D55E00", "#009E73", "#CC79A7", "#56B4E9")
 # What was compared, as the report says it; and one case, in a sentence
@@ -90,7 +92,7 @@ def build(analysis: rv.Analysis, data=None, rows=None) -> str:
     kind = ("ordered grades: " + " < ".join(a.grades)) if a.ordered else ("categories: " + ", ".join(a.grades))
     out = [f"<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' "
            f"content='width=device-width, initial-scale=1'><title>{_e(a.name)} — parameter relevance</title>"
-           f"<style>{CSS}{VERDICT_CSS}</style></head><body><main>"]
+           f"<style>{CSS}{VERDICT_CSS}</style></head><body><main>" + brand.logo_img()]
     # 1. Header
     counts = " · ".join(f"{_e(g)} {n}" for g, n in a.counts.items())
     out.append(f"<h1>{_e(a.name)}: which parameters separate the classes</h1>"

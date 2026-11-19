@@ -24,6 +24,8 @@ Sections:
 
 from __future__ import annotations
 
+from modalytics import brand
+
 import datetime as dt
 import math
 
@@ -32,7 +34,7 @@ from modalytics.training import classifiers as cl
 from modalytics.training import metrics as mt
 
 EXTRA_CSS = """
-.cm td.n, .cm th.n { min-width: 64px; } .cm td.hit { background: #e8f6f0; font-weight: 600; }
+.cm td.n, .cm th.n { min-width: 64px; } .cm td.hit { background: #f3ecf7; font-weight: 600; }
 .verdict-best { color: #1f8a70; font-weight: 600; } .verdict-same { color: #0072B2; } .verdict-worse { color: #8b97a8; }
 """
 
@@ -113,7 +115,7 @@ def build(a: dict, built: dict, tset, data, train, held, finals: dict | None = N
                                         for i, g in enumerate(grades))
     out = [f"<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' "
            f"content='width=device-width, initial-scale=1'><title>{_e(tset.name)} — classifiers compared</title>"
-           f"<style>{CSS}{EXTRA_CSS}</style></head><body><main>"]
+           f"<style>{CSS}{EXTRA_CSS}</style></head><body><main>" + brand.logo_img()]
     # 1. Header
     tests = "".join(f" · test group {_e(g)}: {counts(d, rows)}" for g, (d, rows) in (finals or {}).items())
     out.append(f"<h1>{_e(tset.name)}: classifiers compared</h1><div class='muted'>{_e(tset.group)} objects · profile "

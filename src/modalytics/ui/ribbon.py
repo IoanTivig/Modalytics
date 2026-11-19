@@ -108,7 +108,7 @@ class RibbonScroll(QtWidgets.QScrollArea):
 
 
 class Ribbon(QtWidgets.QWidget):
-    """Tabs of button groups, with the application title on the left."""
+    """Tabs of button groups, with the Modalytics logo on the left (white or purple, following the theme)."""
 
     def __init__(self, title: str = "Modalytics", parent=None) -> None:
         super().__init__(parent)
@@ -124,8 +124,9 @@ class Ribbon(QtWidgets.QWidget):
         self.tabbar.currentChanged.connect(self.stack.setCurrentIndex)
         self._pages: dict[str, QtWidgets.QHBoxLayout] = {}
 
-        app_title = QtWidgets.QLabel(title)
-        app_title.setObjectName("AppTitle")
+        from modalytics.ui.logo import LogoLabel
+        app_title = LogoLabel(height=20)
+        app_title.setToolTip(title)
         top = QtWidgets.QHBoxLayout()
         top.setContentsMargins(6, 4, 6, 0)
         top.addWidget(app_title)

@@ -50,7 +50,7 @@ class PythonHighlighter(QtGui.QSyntaxHighlighter):
         self.f_num = fmt("#f78c6c" if dark else "#b45309")
         self.f_str = fmt("#c3e88d" if dark else "#15803d")
         self.f_comment = fmt(tokens.get("text_muted", "#888"), italic=True)
-        self.f_ctx = fmt(tokens.get("accent", "#2fb3a3"), bold=True)
+        self.f_ctx = fmt(tokens.get("accent", "#864CA0"), bold=True)
         self.f_marker = fmt(tokens.get("text_muted", "#888"), bold=True, italic=True)
         builtins = ("abs|all|any|bool|dict|enumerate|float|int|len|list|max|min|print|range|round|"
                     "set|sorted|str|sum|tuple|zip|isinstance|ValueError|None|True|False")

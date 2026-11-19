@@ -30,10 +30,10 @@ from modalytics.help.markdown import to_html
 KEY = QtCore.Qt.ItemDataRole.UserRole
 
 CSS = """
-:root { --bg: #ffffff; --fg: #1d2430; --muted: #5b6676; --line: #e1e5ea; --accent: #1f8a70; --code: #f3f5f7;
-        --note: #e8f1fb; --tip: #e8f6f0; --caution: #fff4e0; }
-body.dark { --bg: #1b1f24; --fg: #dde3ea; --muted: #9aa5b1; --line: #343b44; --accent: #4cc39c; --code: #262c33;
-            --note: #1f2d3d; --tip: #1d3129; --caution: #3a2f1c; }
+:root { --bg: #ffffff; --fg: #1d2430; --muted: #5b6676; --line: #e1e5ea; --accent: #653988; --code: #f3f5f7;
+        --note: #e8f1fb; --tip: #f1e9f6; --caution: #fff4e0; }
+body.dark { --bg: #1a1621; --fg: #ece6f1; --muted: #9a8fa8; --line: #352c42; --accent: #c27cb2; --code: #231d2c;
+            --note: #1f2d3d; --tip: #2a2035; --caution: #3a2f1c; }
 body { background: var(--bg); color: var(--fg); font: 14px/1.6 "Segoe UI", system-ui, sans-serif;
        margin: 0; padding: 26px 34px 60px; max-width: 980px; }
 h1 { font-size: 26px; margin: 0 0 14px; } h2 { font-size: 20px; margin: 30px 0 8px; padding-bottom: 4px;

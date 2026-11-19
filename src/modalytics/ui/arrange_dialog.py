@@ -18,7 +18,7 @@ from __future__ import annotations
 
 from PySide6 import QtCore, QtGui, QtWidgets
 
-from modalytics import app_settings
+from modalytics import app_settings, brand
 from modalytics.core import arrange as ar
 from modalytics.ui.settings.widgets import muted
 
@@ -47,14 +47,14 @@ class ArrangePreview(QtWidgets.QWidget):
         w, h = ar.bounds(self.sizes, self.spots)
         pad = 12
         k = min((self.width() - 2 * pad) / max(w, 1e-9), (self.height() - 2 * pad) / max(h, 1e-9))
-        accent = QtGui.QColor("#4fc3a1")
+        accent = QtGui.QColor(brand.ORCHID)
         font = p.font()
         font.setPointSizeF(7.5)
         p.setFont(font)
         for (x, y), (iw, ih), name in zip(self.spots, self.sizes, self.names):
             r = QtCore.QRectF(pad + x * k, pad + y * k, max(iw * k, 2), max(ih * k, 2))
             p.setPen(QtGui.QPen(accent, 1))
-            p.setBrush(QtGui.QColor(79, 195, 161, 40))
+            p.setBrush(QtGui.QColor(accent.red(), accent.green(), accent.blue(), 40))
             p.drawRect(r)
             if r.width() > 30 and r.height() > 12:
                 p.setPen(pal.color(QtGui.QPalette.ColorRole.Text))

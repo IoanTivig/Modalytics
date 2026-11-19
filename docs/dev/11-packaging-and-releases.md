@@ -78,6 +78,12 @@ and the training pack are never touched (the pack stays in `%LOCALAPPDATA%\Modal
 Above ~3.5 GB of program (`ONE_FILE_LIMIT`), `build.py` turns on disk spanning: `setup.exe` + `setup-N.bin` slices
 of 1.9 GB (GitHub takes release files under 2 GiB; the build warns about any larger file).
 
+Its look (Inno Setup 6.6 or later): light or dark as Windows is set (`WizardStyle=modern dynamic`), the app's
+background colours, a welcome page with the loading window's side panel (the white logo on the dark brand gradient,
+a stripe of the brand colours) and the application icon in the corner of the other pages. The pictures, one per
+screen scale, are in `packaging/installer/`, made with the icon by `python packaging/make_icon.py` from
+`modalytics.brand`; the same files are named for the dark appearance too (else setup swaps in its own).
+
 ## Checking an installation
 
 `modalytics-cli --self-test` (any computer; a temporary library, nothing of the user's touched) runs

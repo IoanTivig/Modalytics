@@ -23,10 +23,13 @@ src/modalytics/
   scripts/       external scripts (tasks beside the analysis)
   help/          the user and power-user guides (Markdown) and their converter
   render/        the GPU canvas (pygfx / wgpu): tile choice, background loader, visuals, view maths, GPU choice
-  ui/            PySide6: main window, start screen, ribbon, panels, Settings, Training, Help, PDF printing
+  ui/            PySide6: main window, start screen, ribbon, panels, Settings, Training, Help, PDF printing,
+                 the loading window (splash.py) and the logo widget (logo.py)
   resources/     built-in profiles, parameters, importers, processing steps, registration methods, scripts,
-                 architectures
+                 architectures, the logos (brand/)
   paths.py, app_settings.py, diagnostics.py, fileio.py, icons.py
+  brand.py       the colour palette and the logo files (themes, loading window, icon and reports use it)
+  startup.py     what is loaded at start-up, step by step, in a background thread (the loading window shows it)
 ```
 
 The dependency direction is one way: `ui` → `render`, `services`, `training`, `report`… → `core`. **Nothing below `ui`

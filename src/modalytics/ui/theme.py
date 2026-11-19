@@ -4,46 +4,49 @@ Dark and light themes from one set of design tokens.
 Every colour used by the UI *and* the canvas comes from ``TOKENS``; the Qt
 style sheet is generated from them, so a new theme is one more dict.
 
-Look: deep slate surfaces with a single teal accent (not napari's neutral
-grey), high-contrast text, thin borders, 6 px radii.
+Look: the brand's colours (``modalytics.brand``): near-black surfaces with a hint of indigo, one purple
+accent (violet in the dark theme, the logo's purple in the light one), high-contrast text, thin borders,
+6 px radii. The canvas backgrounds stay nearly neutral so the images' own colours are not tinted.
 """
 
 from __future__ import annotations
 
 from PySide6 import QtGui, QtWidgets
 
+from modalytics import brand
+
 TOKENS: dict[str, dict[str, str]] = {
     "dark": {
-        "bg": "#11151b",            # window background
-        "surface": "#171c24",       # panels
-        "surface_alt": "#1e2530",   # inputs, hovered rows
-        "border": "#2a3341",
-        "text": "#e3e8ef",
-        "text_muted": "#8b97a8",
-        "accent": "#2fb3a3",        # teal
-        "accent_text": "#06221f",
-        "selection": "#1f4e4a",
-        "danger": "#e5675f",
+        "bg": "#141119",            # window background (near-black, a hint of the brand's indigo)
+        "surface": "#1a1621",       # panels
+        "surface_alt": "#231d2c",   # inputs, hovered rows
+        "border": "#352c42",
+        "text": "#ece6f1",
+        "text_muted": "#9a8fa8",
+        "accent": brand.VIOLET,     # #864CA0: white text on it reads well (5.9:1)
+        "accent_text": "#ffffff",
+        "selection": brand.INDIGO,  # #3A2665
+        "danger": "#e0606c",        # the brand red, lightened to read on the dark background
         "warning": "#e0a33a",       # amber: something to check
-        "canvas_bg": "#0a0d11",
-        "minimap_bg": "#05070a",
-        "minimap_border": "#9aa6b8",
+        "canvas_bg": "#0c0a10",     # nearly neutral: the images' own colours must not be tinted
+        "minimap_bg": "#060509",
+        "minimap_border": "#a99bb8",
     },
     "light": {
-        "bg": "#eef1f5",
-        "surface": "#fbfcfd",
+        "bg": "#f3f0f6",
+        "surface": "#fcfbfd",
         "surface_alt": "#ffffff",
-        "border": "#d3d9e2",
-        "text": "#17202b",
-        "text_muted": "#5a6677",
-        "accent": "#0e8a7d",
+        "border": "#dcd4e4",
+        "text": "#1d1626",
+        "text_muted": "#665a75",
+        "accent": brand.PURPLE,     # #653988, the logo's colour (8.4:1 with white)
         "accent_text": "#ffffff",
-        "selection": "#cdeee9",
-        "danger": "#c4423a",
+        "selection": "#e9dcf1",     # a pale tint of the purple
+        "danger": brand.CRIMSON,    # #A2142F
         "warning": "#a8670a",
-        "canvas_bg": "#dfe4ea",
-        "minimap_bg": "#c9d0d9",
-        "minimap_border": "#4a5566",
+        "canvas_bg": "#e2dfe6",
+        "minimap_bg": "#cfcad6",
+        "minimap_border": "#4a3d5c",
     },
 }
 
@@ -92,6 +95,7 @@ def stylesheet(t: dict[str, str], arrows: tuple[str, str] | None = None) -> str:
     QLabel#Muted {{ color: {t['text_muted']}; }}
     QLabel#SectionTitle {{ color: {t['text_muted']}; font-size: 8.5pt; font-weight: 600; padding-top: 8px; }}
     QLabel#AppTitle {{ font-size: 12pt; font-weight: 700; color: {t['accent']}; padding: 0 12px 0 6px; }}
+    QLabel#AppLogo {{ padding: 0 12px 0 4px; }}
     QToolBar {{ background: {t['surface']}; border: none; border-bottom: 1px solid {t['border']}; spacing: 4px; padding: 4px; }}
     QToolButton {{ background: transparent; border: 1px solid transparent; border-radius: 6px; padding: 5px 10px; }}
     QToolButton:hover {{ background: {t['surface_alt']}; border-color: {t['border']}; }}

@@ -24,6 +24,8 @@ At start-up each graphics API the OS offers (Vulkan, Direct3D 12, OpenGL, Metal)
 process**, so a driver that crashes while being enumerated cannot take the app down. The adapters are ranked:
 hardware before software, discrete before integrated before virtual, then Vulkan › D3D12 › GL, then the OS order.
 With no usable GPU the software renderer (WARP, llvmpipe) still draws, slowly, and the console says so.
+The loading window waits for the probes in its background thread (`startup.check_graphics`, through
+`gpu.find_candidates`), so the canvas finds the answers ready; it never creates a wgpu instance itself.
 
 > **Caution** Never put Vulkan and GL in one wgpu instance: on the dev machine (AMD 7900 XT + NVIDIA A2000) wgpu
 > crashes when both are enumerated together.

@@ -1,5 +1,16 @@
 # Getting started
 
+## Starting Modalytics
+
+While Modalytics starts, a small **loading window** shows the logo, the version and what is being loaded: the
+libraries, the processing steps, the devices the models can run on and the graphics card found. The step counter and
+the bar show how far it is; the coloured border keeps turning while it works. It closes by itself when the main window
+is ready (a few seconds; the first start after installing takes longer).
+
+![The loading window while Modalytics starts](../images/splash.webp)
+
+To start without it (scripts, a remote desktop): `Modalytics.exe --no-splash`.
+
 ## The start screen
 
 Modalytics opens on the **start screen**, with three ways in:

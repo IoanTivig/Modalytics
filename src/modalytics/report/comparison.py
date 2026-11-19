@@ -35,6 +35,8 @@ judged on projects it learned from), no curves, and no training methods.
 
 from __future__ import annotations
 
+from modalytics import brand
+
 import base64
 import datetime as dt
 import html
@@ -305,7 +307,7 @@ def example_picture(ex: seg.Example, found: list, width: int = 300) -> str:
 
 # ---------------------------------------------------------------- the report
 CSS = """
-:root { --fg:#1d232b; --muted:#5f6b7a; --line:#d9dee5; --accent:#1f8a70; --soft:#f4f6f8; --bg:#ffffff; }
+:root { --fg:#1d232b; --muted:#5f6b7a; --line:#d9dee5; --accent:#653988; --soft:#f4f6f8; --bg:#ffffff; }
 * { box-sizing: border-box; }
 body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; color: var(--fg); background: var(--bg);
        margin: 0; font-size: 14px; line-height: 1.45; }
@@ -313,12 +315,12 @@ main { max-width: 1100px; margin: 0 auto; padding: 24px 24px 60px; }
 h1 { font-size: 24px; margin: 0 0 4px; } h2 { font-size: 18px; margin: 34px 0 10px; border-bottom: 2px solid
 var(--accent); padding-bottom: 4px; } h3 { font-size: 15px; margin: 20px 0 6px; }
 .muted { color: var(--muted); font-size: 12px; } .warn { background: #fff4e0; border-left: 4px solid #e0a040;
-padding: 8px 12px; margin: 10px 0; } .good { background: #e8f6f0; border-left: 4px solid var(--accent);
+padding: 8px 12px; margin: 10px 0; } .good { background: #f3ecf7; border-left: 4px solid var(--accent);
 padding: 8px 12px; margin: 10px 0; }
 table { border-collapse: collapse; margin: 6px 0 12px; font-size: 13px; }
 th, td { border-bottom: 1px solid var(--line); padding: 4px 8px; text-align: left; vertical-align: top; }
 th { background: var(--soft); font-weight: 600; } td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
-tr.best td { background: #e8f6f0; } .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%;
+tr.best td { background: #f3ecf7; } .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%;
 margin-right: 6px; }
 .scroll { overflow-x: auto; max-width: 100%; border: 1px solid var(--line); border-radius: 4px; }
 .scroll table { margin: 0; width: max-content; min-width: 100%; }
@@ -525,7 +527,7 @@ def build(comp: cmp.Comparison) -> str:
     out = [f"<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' "
            f"content='width=device-width, initial-scale=1'><title>{_e(comp.name)} — "
            f"{'model evaluation' if evaluation else 'architecture comparison'}</title>"
-           f"<style>{CSS}</style></head><body><main>"]
+           f"<style>{CSS}</style></head><body><main>" + brand.logo_img()]
 
     # 1. Header
     roles = comp.projects

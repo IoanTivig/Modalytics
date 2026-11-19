@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "modalytics"
-version = "0.1.0"
+version = "0.1.1"
 description = "Open-source modular multi-modal imaging analysis platform (WSI, quantitative phase, brightfield)."
 readme = "README.md"
 requires-python = ">=3.11"

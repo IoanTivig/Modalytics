@@ -56,9 +56,9 @@ class StartPage(QtWidgets.QWidget):
 
         # 1. Left column: what to do
         left = QtWidgets.QVBoxLayout()
-        title = QtWidgets.QLabel("Modalytics")
-        title.setObjectName("AppTitle")
-        title.setStyleSheet("font-size: 22pt; padding: 0 0 18px 0;")
+        from modalytics.ui.logo import LogoLabel
+        title = LogoLabel(height=46)
+        title.setStyleSheet("padding: 0 0 22px 0;")
         left.addWidget(title)
         self.analyze_btn = self._big_button("Analyze", "Start a project from a profile")
         self.training_btn = self._big_button("Training", "Learn from graded projects: which parameters "

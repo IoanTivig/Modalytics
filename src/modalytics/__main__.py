@@ -4,6 +4,7 @@ Entry point: ``python -m modalytics [--theme light] [files…]``.
 Without files the start screen opens. Files: a ``.modalytics`` project,
 ``.hpro`` (HoloPath project), a zarr folder (WSI) or ``Phase.txt``.
 
+``--no-splash`` starts without the loading window (``ui.splash``).
 ``--gpu-info`` prints the GPUs found for drawing and for the models, and what
 was chosen (see ``render.gpu`` and ``services.compute``). ``--version`` prints the
 version; ``--self-test`` checks the installation (``modalytics.selftest``);
@@ -47,6 +48,7 @@ def main(argv: list[str] | None = None) -> int:
                         "zarr folder, phase map or microscope image")
     parser.add_argument("--theme", choices=("dark", "light"), default=None,
                         help="override the theme saved in Settings › General")
+    parser.add_argument("--no-splash", action="store_true", help="start without the loading window")
     parser.add_argument("--gpu-info", action="store_true", help="print the GPUs found and chosen, then exit")
     parser.add_argument("--version", action="store_true", help="print the version, then exit")
     parser.add_argument("--self-test", action="store_true",
@@ -94,17 +96,41 @@ def main(argv: list[str] | None = None) -> int:
     app.setWindowIcon(QtGui.QIcon(str(paths.RESOURCES / "icons" / "modalytics.png")))
     diagnostics.install_qt()                         # Qt's own warnings go to the log too (when it is on)
 
+    # 2. The loading window: the libraries load and the GPU probes finish in a background thread meanwhile
+    #    (``startup``); then the window is built here, on the main thread, as one more step it announces
+    from modalytics import __version__, startup
+    project_to_open = next((p for p in args.files if p.lower().endswith(".modalytics")), None)
+    images = [p for p in args.files if not p.lower().endswith(".modalytics")]
+    splash = None
+    if not args.no_splash:
+        from modalytics.ui.splash import SplashWindow
+        loader = startup.Loader(startup.background_steps(),
+                                extra=1 + bool(images) + bool(project_to_open)).start()   # the steps below
+        splash = SplashWindow(__version__)
+        splash.show()
+        state = splash.wait_for(loader)
+        if state.error is not None:                  # a library is missing or broken: say so as before
+            splash.close()
+            raise state.error
+
+    def announce(label: str, detail: str = "") -> None:
+        """A step done here, on the main thread: shown in the loading window (if any) before it starts."""
+        if splash is not None:
+            splash.step(label, detail)
+
     from modalytics.core.model import Project
     from modalytics.io import importers
     from modalytics.ui.main_window import MainWindow
 
-    # 2. Project: files from the command line, or none (the start screen)
+    # 3. Project: files from the command line, or none (the start screen)
     project = None
-    project_to_open = next((p for p in args.files if p.lower().endswith(".modalytics")), None)
-    images = [p for p in args.files if not p.lower().endswith(".modalytics")]
     if images and project is None:
         project = Project()                              # the window gives it the default profile
     nodes = []
+    if images:
+        first = os.path.basename(os.path.normpath(images[0]))
+        more = f" and {len(images) - 1} more" if len(images) > 1 else ""
+        announce(f"Importing {first}{more}", "images from the command line")
     for path in images:
         if path.lower().endswith(".hpro"):
             nodes += importers.import_hpro(path)
@@ -119,15 +145,19 @@ def main(argv: list[str] | None = None) -> int:
             except (ImportFailed, ValueError) as exc:
                 print(f"⚠️ {exc}")
 
-    # 3. Window (images from the command line go in like any import: the profile's types and processing)
+    # 4. Window (images from the command line go in like any import: the profile's types and processing)
+    announce("Building the workspace", "ribbon · layers · canvas · start screen")
     win = MainWindow(project, theme=args.theme or app_settings.get("theme"))
     if nodes:
         win.add_images(nodes)
     win.show()
     if project_to_open:
+        announce(f"Opening {os.path.basename(project_to_open)}", "the project's images, masks and results")
         win.open_path(project_to_open)
     elif project is not None:
         win.canvas.fit_all()
+    if splash is not None:
+        splash.finish(win)                           # fades out over the window
     return app.exec()
 
 

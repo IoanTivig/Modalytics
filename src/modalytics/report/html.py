@@ -38,6 +38,8 @@ report and the Results CSV.
 
 from __future__ import annotations
 
+from modalytics import brand
+
 import base64
 import datetime as dt
 import getpass
@@ -311,7 +313,7 @@ def _boxplot(key: Key, groups: list, cutoffs: list, width: int = 640) -> str:
 
 # ---------------------------------------------------------------- the report
 CSS = """
-:root { --fg:#1d232b; --muted:#5f6b7a; --line:#d9dee5; --accent:#1f8a70; --bad:#c23b3b; --bg:#ffffff;
+:root { --fg:#1d232b; --muted:#5f6b7a; --line:#d9dee5; --accent:#653988; --bad:#c23b3b; --bg:#ffffff;
         --soft:#f4f6f8; }
 * { box-sizing: border-box; }
 body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; color: var(--fg); background: var(--bg);
@@ -432,7 +434,7 @@ def build(project, library=None, progress=None, pdf: bool = False) -> str:
     name = os.path.splitext(os.path.basename(project.path))[0] if project.path else "Untitled project"
     out = [f"<!doctype html><html lang='en'><head><meta charset='utf-8'><meta name='viewport' "
            f"content='width=device-width, initial-scale=1'><title>{_e(name)} — report</title>"
-           f"<style>{CSS}</style></head><body><main>"]
+           f"<style>{CSS}</style></head><body><main>" + brand.logo_img()]
 
     # 1. Header and warnings
     out.append(f"<h1>{_e(name)}</h1><div class='muted'>Report made {dt.datetime.now():%d %B %Y, %H:%M} by "

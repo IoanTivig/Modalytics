@@ -214,6 +214,31 @@ choice: GpuChoice | None = None
 adapter_summary = "not initialised"
 
 
+def find_candidates(wanted: str = "") -> tuple[list[Adapter], dict[str, str]]:
+    """The adapters to choose from: waits for the probes in order of preference, until one finds a discrete GPU
+    (the one asked for, if any); the others keep running in the background for the report.
+
+    Safe to call from any thread (it only waits for the probe processes): the loading window calls it while the
+    program loads, so ``init_gpu`` later finds the answers ready.
+
+    Args:
+        wanted: ``MODALYTICS_GPU``: a name substring, or "software"/"cpu".
+
+    Returns:
+        tuple: (adapters found, {API: problem message}).
+    """
+    found, problems = [], {}
+    for api in APIS.get(sys.platform, APIS["linux"]):
+        adapters, msg = probe_result(api)
+        found += adapters
+        if msg:
+            problems[api] = msg
+        if wanted.lower() not in ("software", "cpu") and \
+                any(a.kind == "DiscreteGPU" and wanted.lower() in a.name.lower() for a in adapters):
+            break
+    return found, problems
+
+
 def init_gpu() -> str:
     """Pick the rendering adapter once (see the module docstring) and hand it to pygfx.
 
@@ -234,17 +259,7 @@ def init_gpu() -> str:
         best = None
         backends = [b.strip() for b in forced.split(",") if b.strip()]
     else:
-        # Wait for the probes in order of preference, until one finds a discrete GPU (the one asked
-        # for, if any); the others keep running in the background for the report
-        found, problems = [], {}
-        for api in APIS.get(sys.platform, APIS["linux"]):
-            adapters, msg = probe_result(api)
-            found += adapters
-            if msg:
-                problems[api] = msg
-            if wanted.lower() not in ("software", "cpu") and \
-                    any(a.kind == "DiscreteGPU" and wanted.lower() in a.name.lower() for a in adapters):
-                break
+        found, problems = find_candidates(wanted)
         ranked = rank(found, wanted=wanted)
         best = ranked[0] if ranked else None
         # Last resort (every probe failed): let wgpu decide among the primary APIs

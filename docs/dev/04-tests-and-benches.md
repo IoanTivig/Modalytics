@@ -44,6 +44,7 @@ it must never reach your own library, settings or projects. The shipped models a
 | Segmentation: Train, several models, architectures, resolution | `check_seg_train`, `check_seg_compare`, `check_architectures`, `check_train_resolution` (full edition, GPU; they train) |
 | Hardware choice | `check_hardware` |
 | The Help window, F1 | `check_help` |
+| The loading window at start-up | `check_splash` |
 | Real input (moves the cursor, presses keys) | `check_dock_drag_real`, `check_modifiers_real` |
 | Performance | `bench_canvas.py [--vsync] [--present screen\|bitmap]`, `bench_masks.py`, `bench_whole_slide.py` |
 
